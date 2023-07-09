@@ -3,8 +3,11 @@ package travel.management.system;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.*;
+import java.awt.event.*;
 
-public class Login extends JFrame{
+public class Login extends JFrame implements ActionListener{
+    
+    JButton login,signup,password;
     
     Login(){
         setSize(900,400);
@@ -51,25 +54,28 @@ public class Login extends JFrame{
         tfpassword.setBorder(BorderFactory.createEmptyBorder());
         p2.add(tfpassword);
         
-        JButton login=new JButton("Login");
+        login=new JButton("Login");
         login.setBounds(60, 200, 130, 30);
         login.setBackground(new Color(133,193,233));
         login.setForeground(Color.WHITE);
         login.setBorder(new LineBorder(new Color(133,193,233)));
+        login.addActionListener(this);
         p2.add(login);
         
-        JButton signup=new JButton("Signup");
+        signup=new JButton("Signup");
         signup.setBounds(230, 200, 130, 30);
         signup.setBackground(new Color(133,193,233));
         signup.setForeground(Color.WHITE);
         signup.setBorder(new LineBorder(new Color(133,193,233)));
+        signup.addActionListener(this);
         p2.add(signup);
         
-        JButton password=new JButton("Forget Password");
+        password=new JButton("Forget Password");
         password.setBounds(130, 250, 130, 30);
         password.setBackground(new Color(133,193,233));
         password.setForeground(Color.WHITE);
         password.setBorder(new LineBorder(new Color(133,193,233)));
+        password.addActionListener(this);
         p2.add(password);
         
         JLabel text=new JLabel("Trouble in login...");
@@ -78,6 +84,19 @@ public class Login extends JFrame{
         p2.add(text);
         
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource()==login){
+            
+        }else if(ae.getSource()==signup){
+           setVisible(false);
+           new Signup();
+        }else{
+            setVisible(false);
+            new ForgetPassword();
+        }
+            
     }
     
     public static void main(String[] args){
